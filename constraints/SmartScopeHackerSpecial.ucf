@@ -1,0 +1,167 @@
+NET "*" IOSTANDARD = LVCMOS33;
+CONFIG VCCAUX=3.3;
+##################################
+#
+# General
+#
+NET "in_clk" LOC = P23;
+
+NET "inout_sda" LOC   = P30 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "in_scl"    LOC   = P70;
+NET "out_negEn" LOC	 = P55;
+
+##################################
+#
+# RAM pins
+#
+NET "inout_ram_dq[0]"   LOC = P134 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[1]"   LOC = P137 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[2]"   LOC = P138 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[3]"   LOC = P139 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[4]"   LOC = P140 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[5]"   LOC = P141 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[6]"   LOC = P142 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[7]"   LOC = P143 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[8]"   LOC = P121 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[9]"   LOC = P123 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[10]"  LOC = P124 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[11]"  LOC = P126 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[12]"  LOC = P127 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[13]"  LOC = P131 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[14]"  LOC = P132 | DRIVE = "12" | SLEW = "FAST";
+NET "inout_ram_dq[15]"  LOC = P133 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[0]"      LOC = P11  | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[1]"      LOC = P14  | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[2]"      LOC = P12  | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[3]"      LOC = P17  | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[4]"      LOC = P117 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[5]"      LOC = P116 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[6]"      LOC = P115 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[7]"      LOC = P114 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[8]"      LOC = P112 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[9]"      LOC = P111 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[10]"     LOC = P16  | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_a[11]"     LOC = P118 | DRIVE = "12" | SLEW = "FAST";
+#NET "out_ram_a[12]"    LOC = P119 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_ba[0]"     LOC = P8   | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_ba[1]"     LOC = P10  | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_cmd[0]"    LOC = P6   | DRIVE = "12" | SLEW = "FAST"; #nWE
+NET "out_ram_cmd[1]"    LOC = P5   | DRIVE = "12" | SLEW = "FAST"; #nCAS
+NET "out_ram_cmd[2]"    LOC = P2   | DRIVE = "12" | SLEW = "FAST"; #nRAS
+NET "out_ram_clk"       LOC = P120 | DRIVE = "12" | SLEW = "FAST";
+NET "out_ram_ncs"       LOC = P1   | DRIVE = "12" | SLEW = "FAST";
+
+##################################
+#
+# PIC pins
+#
+NET "in_pic_rdy" 	  LOC = P33 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_pic_data[0]" LOC = P21 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_pic_data[1]" LOC = P15 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_pic_data[2]" LOC = P26 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_pic_data[3]" LOC = P22 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_pic_data[4]" LOC = P29 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_pic_data[5]" LOC = P27 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_pic_data[6]" LOC = P32 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_pic_data[7]" LOC = P65 | DRIVE = "2" | SLEW = "QUIETIO";
+
+##################################
+#
+# ADC pins
+#
+
+# SPI
+
+NET "out_adc_cs"        LOC = P85 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_adc_sclk"      LOC = P87 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "inout_adc_dsin"    LOC = P88 | DRIVE = "2" | SLEW = "QUIETIO";
+
+# DATA
+
+NET "out_adc_clk"      LOC = P105 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "in_adc_dclk"      LOC = P92  | SLEW = "QUIETIO";
+
+NET "in_adc_data[8]" LOC = P93; # DORA
+NET "in_adc_data[7]" LOC = P94;
+NET "in_adc_data[6]" LOC = P95;
+NET "in_adc_data[5]" LOC = P97;
+NET "in_adc_data[4]" LOC = P98;
+NET "in_adc_data[3]" LOC = P99;
+NET "in_adc_data[2]" LOC = P100;
+NET "in_adc_data[1]" LOC = P101;
+NET "in_adc_data[0]" LOC = P102;
+
+
+##################################
+#
+# Analog stage configuration
+#
+NET "out_A_div1_pulse_on" 	LOC = P83 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_A_div1_pulse_off"	LOC = P75 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_A_div_10_100" 		LOC = P56 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_A_ypos" 	   		LOC = P64 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_A_dc"         		LOC = P81 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_A_mult_1"     		LOC = P66 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_A_mult_2"     		LOC = P69 | DRIVE = "2" | SLEW = "QUIETIO";
+
+NET "out_B_div1_pulse_on" 	LOC = P82 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_B_div1_pulse_off"	LOC = P79 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_B_div_10_100" 		LOC = P61 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_B_ypos"       		LOC = P67 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_B_dc"         		LOC = P80 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_B_mult_1"     		LOC = P58 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_B_mult_2"     		LOC = P62 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_opa_B_en" 			LOC = P57 | DRIVE = "2" | SLEW = "QUIETIO";
+
+######################################################
+#
+#  DIGITAL 
+#
+NET "out_power_digital_io" LOC = P7 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "out_digital_3V_5V"    LOC = P60 | DRIVE = "2" | SLEW = "QUIETIO";
+
+#  AWG / Logic analyser / trigger
+NET "out_trigger_pwm" 			 LOC = P34 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "in_trigger_ext"             LOC = P24;
+NET "out_digital_input_enable" 	 LOC = P35 | DRIVE = "2" | SLEW = "QUIETIO";
+NET "inout_awg_digital_input[0]" LOC = P43 | DRIVE = "6" | SLEW = "FAST";
+NET "inout_awg_digital_input[1]" LOC = P44 | DRIVE = "6" | SLEW = "FAST";
+NET "inout_awg_digital_input[2]" LOC = P45 | DRIVE = "6" | SLEW = "FAST";
+NET "inout_awg_digital_input[3]" LOC = P46 | DRIVE = "6" | SLEW = "FAST";
+NET "inout_awg_digital_input[4]" LOC = P47 | DRIVE = "6" | SLEW = "FAST";
+NET "inout_awg_digital_input[5]" LOC = P48 | DRIVE = "6" | SLEW = "FAST";
+NET "inout_awg_digital_input[6]" LOC = P50 | DRIVE = "6" | SLEW = "FAST";
+NET "inout_awg_digital_input[7]" LOC = P51 | DRIVE = "6" | SLEW = "FAST";
+
+#  OUTPUTS
+NET "out_digital[0]" LOC = P38 | DRIVE = "6" | SLEW = "FAST";
+NET "out_digital[1]" LOC = P39 | DRIVE = "6" | SLEW = "FAST";
+NET "out_digital[2]" LOC = P40 | DRIVE = "6" | SLEW = "FAST";
+NET "out_digital[3]" LOC = P41 | DRIVE = "6" | SLEW = "FAST";
+
+#############################################
+#
+# Sync pins leading to micro USB connector
+#
+NET "usb_micro_d_p" LOC = P144;
+NET "usb_micro_d_n" LOC = P9;
+
+#############################################
+#
+# 
+#
+NET "inout_GPIO[1]" LOC = P59; # J10.p5
+NET "inout_GPIO[2]" LOC = P78; #  J9.p2
+NET "inout_GPIO[3]" LOC = P74; # J10.p6
+NET "inout_GPIO[4]" LOC = P84; #  J9.p4
+NET "inout_GPIO[5]" LOC = P104;#  J9.p3
+
+###############################################################################
+#
+# The input clock is running at 48MHz, or 20.833 ns period
+#
+NET "in_clk" TNM_NET = in_clk;
+TIMESPEC TS_in_clk = PERIOD "in_clk" 20.833 HIGH 50%;
+
+NET "in_adc_dclk" TNM_NET = in_adc_clk;
+TIMESPEC TS_in_adc_dclk = PERIOD "in_adc_dclk" 10.000 HIGH 50%;

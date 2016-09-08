@@ -1,0 +1,16 @@
+register_bank :
+    address : 0x0C
+    registers :
+        power : 
+            b_reset         : 
+            b_negative_rail : 
+            b_digital_3v_5v : 
+            b_opamp_ch_b    : 
+        spi_address : 
+        spi_value :
+        ch_a_ctrl :
+            b_divider    : { width : 2 }
+            b_multiplier : { width : 2 }
+            b_ac_dc :
+        ch_a_y_offset : 
+        

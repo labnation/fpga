@@ -1,0 +1,26 @@
+/work/
+/build/BuildVersion*
+/work_script/
+/*_xdb/
+/iseconfig/
+/build/reports/
+*.log
+/bitstreams/
+*.gise
+*.twx
+*.xml
+*.html
+#ipcore subfolders and unnecessary files
+/ipcore_dir/*
+!/ipcore_dir/*.xco
+!/ipcore_dir/*.cgp
+# impact files
+auto_project*.ipf
+impact.xsl
+impact_impact.xwbt
+# chipscope files
+*.cdc
+*.cpj
+# modelsim stracktraces
+*.vstf
+*.DS_Store
