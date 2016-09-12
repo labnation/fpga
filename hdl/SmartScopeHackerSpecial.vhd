@@ -109,6 +109,8 @@ architecture behavior of SmartScopeHackerSpecial is
     signal sig_pic_debug   : std_logic;
     signal sig_pic_dump_req: std_logic;
  
+    signal sig_adc_cha      : unsigned(7 downto 0);
+    signal sig_adc_chb      : unsigned(7 downto 0);
 begin
     
 	-- PLL clock generation
@@ -194,7 +196,7 @@ begin
     -- Miscellaneous
     usb_micro_d_n           <= 'Z';
     usb_micro_d_p           <= 'Z';
-    inout_gpio              <= (others => sig_reset);
+    inout_gpio(5 downto 3)  <= (others => sig_reset);
     
     AdcController: entity work.AdcController
     port map (
@@ -206,9 +208,9 @@ begin
         in_adc_data 		=> in_adc_data,
     
         -- Data from ADC for internal use, synchronous to in_adc_dclk
-        out_channel_a       => open,
+        out_channel_a       => sig_adc_cha,
         out_channel_a_ovr   => open,
-        out_channel_b       => open,
+        out_channel_b       => sig_adc_chb,
         out_channel_b_ovr   => open,
         
         -- ADC SPI register control
@@ -260,4 +262,20 @@ begin
     	out_data		=> out_pic_data
     );
     
+    pwm_cha: entity work.PulseWidthModulator
+	port map( 
+		in_clk 			=> in_adc_dclk,
+		in_reset 		=> sig_reset,
+		in_duty_cycle 	=> sig_adc_cha,
+		out_pwm 		=> inout_gpio(1)
+	);
+    
+    pwm_chb: entity work.PulseWidthModulator
+	port map( 
+		in_clk 			=> in_adc_dclk,
+		in_reset 		=> sig_reset,
+		in_duty_cycle 	=> sig_adc_chb,
+		out_pwm 		=> inout_gpio(2)
+	);    
+     
 end;
