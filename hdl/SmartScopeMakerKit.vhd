@@ -12,7 +12,7 @@ use work.buildversion.all;
 library unisim;
 use unisim.vcomponents.all;
  
-entity SmartScopeHackerSpecial is
+entity SmartScopeMakerKit is
 
 port (
 	-- general
@@ -85,9 +85,9 @@ port (
                                             -- GPIO 5 =   J9.p3
 );
 
-end SmartScopeHackerSpecial;
+end SmartScopeMakerKit;
  
-architecture behavior of SmartScopeHackerSpecial is 
+architecture behavior of SmartScopeMakerKit is 
  
 	signal sig_reset		: std_logic;
 

@@ -1,10 +1,10 @@
 run
 -ifn hdl_files.txt
 -ifmt mixed
--ofn SmartScopeHackerSpecial
+-ofn SmartScopeMakerKit
 -ofmt NGC
 -p xc6slx4-3-tqg144
--top SmartScopeHackerSpecial
+-top SmartScopeMakerKit
 -opt_mode Area
 -opt_level 2
 -power NO
