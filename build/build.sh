@@ -2,6 +2,37 @@
 #Quit script when command fails
 set -e 
 
+function usage {
+    cat <<EOF
+Usage:
+
+ $SCRIPT [--noregen] 
+
+    --noregen   Don't regenerate ip cores
+                This needs to be done at least once
+                though. The build script will fail in
+                case of need.
+EOF
+    exit -1
+}
+
+DO_CORE_REGEN=1
+
+#Parse options
+while [[ $# -gt 0 ]]; do
+    key=$1;
+    case $key in
+        --noregen)
+        DO_CORE_REGEN=0
+        ;;
+        *)
+        echo Unknown option $key
+        usage
+        ;;
+    esac
+    shift
+done
+
 BINDIR=$XILINX_BIN_DIR
 if [ "${MSYSTEM:0:5}" = "MINGW" ] 
 then
@@ -22,7 +53,7 @@ BUILD_VERSION_HDL=$WORK_DIR/BuildVersion.vhd
 
 BASENAME=SmartScopeMakerKit
 LOG_FILE=$REPORTS_DIR/${BASENAME}_$BUILD_DATE
-PARTNAME=xc6slx4-tqg144-3
+PARTNAME=xc6slx4-tqg144-3    
 
 mkdir -p $REPORTS_DIR
 
@@ -49,7 +80,7 @@ cd $WORK_DIR
 
 ##########################################
 ### Generate IP (if requested)
-if [[ $2 = 'regenerate_ip' ]]; then
+if [ $DO_CORE_REGEN -ne 0 ]; then
     cd $IPCORE_DIR
     for i in *.xco; do
         echo === Regenerating code ${i} ====
