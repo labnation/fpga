@@ -1,37 +1,37 @@
-LIBRARY IEEE;
-USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 
-ENTITY PulseWidthModulator IS
-	PORT ( 
-		in_clk 			: IN  STD_LOGIC;
-		in_reset 		: IN  STD_LOGIC;
-		in_duty_cycle 	: IN  UNSIGNED(7 DOWNTO 0);
-		out_PWM 		: OUT STD_LOGIC			  
+entity pulsewidthmodulator is
+	port ( 
+		in_clk 			: in  std_logic;
+		in_reset 		: in  std_logic;
+		in_duty_cycle 	: in  unsigned(7 downto 0);
+		out_pwm 		: out std_logic			  
 	);
-END PulseWidthModulator;
+end pulsewidthmodulator;
 
-ARCHITECTURE Behavioral OF PulseWidthModulator IS
+architecture behavioral of pulsewidthmodulator is
 
-SIGNAL sig_counter		: UNSIGNED(7 DOWNTO 0);
+signal sig_counter		: unsigned(7 downto 0);
 
-BEGIN
+begin
 
-PROCESS(in_clk, in_reset)
-BEGIN
-	IF (in_reset = '1') THEN
-		sig_counter <= (OTHERS => '0');
-	ELSIF RISING_EDGE(in_clk) THEN
+process(in_clk, in_reset)
+begin
+	if (in_reset = '1') then
+		sig_counter <= (others => '0');
+	elsif rising_edge(in_clk) then
 		sig_counter <= sig_counter + 1;		
-		IF (sig_counter > in_duty_cycle) THEN
-			out_PWM <= '0';
-		ELSE
-			out_PWM <= '1';
-		END IF;
-	END IF;
-END PROCESS;
+		if (sig_counter > in_duty_cycle) then
+			out_pwm <= '0';
+		else
+			out_pwm <= '1';
+		end if;
+	end if;
+end process;
 
 
-END Behavioral;
+end behavioral;
 
