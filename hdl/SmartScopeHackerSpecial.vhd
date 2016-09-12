@@ -158,9 +158,9 @@ begin
 	sig_rom(rom_fw_git2) <= build_version(23 downto 16);
 	sig_rom(rom_fw_git3) <= build_version(31 downto 24);
 	
-    out_negen			<= '1';
-	out_digital_3v_5v 	<= '0';
-	out_opa_b_en		<= '1';
+    out_negen			<= sig_regs(reg_power)(b_power_negen);
+	out_digital_3v_5v 	<= sig_regs(reg_power)(b_power_digi_3v_5v);
+	out_opa_b_en		<= sig_regs(reg_power)(b_power_opa_b_en);
 	
     -- ram port
 	inout_ram_dq		<= (others => 'Z');
