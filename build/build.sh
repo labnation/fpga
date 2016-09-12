@@ -20,7 +20,7 @@ BUILD_DATE=`date +%Y-%m-%d_%Hh%M`
 VERSION=`git rev-parse HEAD`
 BUILD_VERSION_HDL=$WORK_DIR/BuildVersion.vhd
 
-BASENAME=SmartScopeHackerSpecial
+BASENAME=SmartScopeMakerKit
 LOG_FILE=$REPORTS_DIR/${BASENAME}_$BUILD_DATE
 PARTNAME=xc6slx4-tqg144-3
 
