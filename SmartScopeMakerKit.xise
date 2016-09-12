@@ -81,6 +81,7 @@
   </files>
 
   <properties>
+    <property xil_pn:name="Create Binary Configuration File" xil_pn:value="true" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Device" xil_pn:value="xc6slx4" xil_pn:valueState="default"/>
     <property xil_pn:name="Device Family" xil_pn:value="Spartan6" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Implementation Top" xil_pn:value="Architecture|SmartScopeMakerKit|behavior" xil_pn:valueState="non-default"/>
