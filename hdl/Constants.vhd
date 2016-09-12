@@ -26,8 +26,13 @@ constant reg_spi_addr           : integer := 1;
 constant reg_spi_value          : integer := 2;
 constant reg_cha_gain           : integer := 3;
 constant reg_chb_gain           : integer := 4;
+constant reg_cha_ypos           : integer := 5;
+constant reg_chb_ypos           : integer := 6;
 
-constant reg_flags              : integer := 5;
+constant reg_flags              : integer := 7;
+constant b_flags_spi_cmd        : integer := 0;
+constant b_flags_cha_ac_dc      : integer := 1;
+constant b_flags_chb_ac_dc      : integer := 2;
 
 constant number_of_registers    : integer := 39;
 

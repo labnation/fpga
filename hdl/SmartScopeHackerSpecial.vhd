@@ -100,6 +100,8 @@ architecture behavior of SmartScopeHackerSpecial is
 	signal sig_rom			: type_registers(number_of_roms - 1 downto 0);
 	signal sig_regs	        : type_registers(number_of_registers-1 downto 0);
     signal sig_regs_user    : type_registers(255 downto 0);
+    signal cha_ypos_duty    : unsigned(7 downto 0);
+    signal chb_ypos_duty    : unsigned(7 downto 0);
     
     -- USB pic output control signals
     signal sig_pic_data    : std_logic_vector(7 downto 0);
@@ -169,22 +171,48 @@ begin
 	out_ram_cmd			<= (others => '0');
 	
     -- analog channel a
-	out_a_div1_pulse_on	<= '0';
-	out_a_div1_pulse_off<= '0';
-	out_a_div_10_100	<= '0';
-	out_a_ypos			<= '0';
-	out_a_dc			<= '0';
-	out_a_mult_1		<= '0';
-	out_a_mult_2		<= '0';
+    gain_cha: entity work.gainctrl
+    port map( 
+		in_clk 						=> sig_clk_adc_spi,
+		in_reset					=> sig_reset,
+		in_gain				        => sig_regs(reg_cha_gain)(3 downto 0),
+		out_div1_relay_pulse_off 	=> out_a_div1_pulse_off,
+		out_div1_relay_pulse_on 	=> out_a_div1_pulse_on,
+		out_div10_100_selector		=> out_a_div_10_100,
+        out_mul(0)                  => out_a_mult_1,
+        out_mul(1)                  => out_a_mult_2
+    );
+    cha_ypos_duty <= sig_regs(reg_cha_ypos);
+    pwm_cha_ypos: entity work.PulseWidthModulator
+	port map( 
+		in_clk 			=> sig_clk_adc_spi,
+		in_reset 		=> sig_reset,
+		in_duty_cycle 	=> cha_ypos_duty,
+		out_pwm 		=> out_a_ypos
+	);
+	out_a_dc			<= sig_regs(reg_flags)(b_flags_cha_ac_dc);
 
     -- analog channel b
-	out_b_div1_pulse_on	<= '0';
-	out_b_div1_pulse_off<= '0';
-	out_b_div_10_100	<= '0';
-	out_b_ypos			<= '0';
-	out_b_dc			<= '0';
-	out_b_mult_1		<= '0';
-	out_b_mult_2		<= '0';	
+    gain_chb: entity work.gainctrl
+    port map( 
+		in_clk 						=> sig_clk_adc_spi,
+		in_reset					=> sig_reset,
+		in_gain				        => sig_regs(reg_chb_gain)(3 downto 0),
+		out_div1_relay_pulse_off 	=> out_b_div1_pulse_off,
+		out_div1_relay_pulse_on 	=> out_b_div1_pulse_on,
+		out_div10_100_selector		=> out_b_div_10_100,
+        out_mul(0)                  => out_b_mult_1,
+        out_mul(1)                  => out_b_mult_2
+    );
+    chb_ypos_duty <= sig_regs(reg_chb_ypos);
+    pwm_chb_ypos: entity work.PulseWidthModulator
+	port map( 
+		in_clk 			=> sig_clk_adc_spi,
+		in_reset 		=> sig_reset,
+		in_duty_cycle 	=> chb_ypos_duty,
+		out_pwm 		=> out_b_ypos
+	);
+	out_b_dc			<= sig_regs(reg_flags)(b_flags_chb_ac_dc);
 
     -- awg/digital input/digital output/trigger
 	out_trigger_pwm			 <= '0';
